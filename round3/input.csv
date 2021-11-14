@@ -1,0 +1,137 @@
+1,alfa-romero, giulia,111,2699
+2,alfa-romero, stelvio,111,3300
+3,alfa-romero, Quadrifoglio,154,3300
+4,audi,100 ls,102,2790
+6,audi,fox,110,3050
+8,audi,5000,110,3784
+9,audi,4000,140,4775
+10,audi ,5000s (diesel),160,3571.8334
+11,bmw,320i,101,3286
+13,bmw,x1,121,4194
+14,bmw,x3,121,4221
+15,bmw,z4,121,4913
+16,bmw,x4,182,6152
+17,bmw,x5,182,8263
+19,chevrolet ,impala,48,1030.2
+20,chevrolet ,monte carlo,70,1259
+21,chevrolet ,vega 2300,70,1315
+22,dodge ,rampage,68,1114.4
+23,dodge ,challenger se,68,1275.4
+24,dodge ,d200,102,1591.4
+25,dodge ,monaco (sw),68,1245.8
+26,dodge ,colt hardtop,68,1338.4
+27,dodge ,colt (sw),68,1521.8
+28,dodge ,coronet custom,102,1711.6
+29,dodge ,dart custom,88,1784.2
+30,dodge ,coronet custom (sw),145,2592.8
+31,honda ,civic,58,1295.8
+32,honda ,civic cvcc,76,1371
+34,honda ,accord cvcc,76,1305.8
+36,honda ,accord lx,76,1459
+37,honda ,civic 1500 gl,76,1459
+38,honda ,accord,86,1579
+39,honda ,civic 1300,86,1819
+40,honda ,prelude,86,1769
+44,isuzu ,MU-X,78,1357
+45,isuzu ,D-Max ,70,1783.3
+46,isuzu ,D-Max V-Cross,70,1783.3
+48,jaguar ,xj,176,6450
+49,jaguar ,xf,176,7110
+50,jaguar ,xk,262,7200
+51,maxda ,rx3,68,1039
+52,maxda ,glc deluxe,68,1219
+53,mazda ,rx2 coupe,68,959
+54,mazda ,rx-4,68,1339
+56,mazda ,626,101,2189
+57,mazda ,glc,101,2369
+58,mazda ,rx-7 gs,101,2729
+59,mazda ,glc 4,135,3129
+61,mazda ,glc custom l,84,1699
+62,mazda ,glc custom,84,2119
+68,buick ,electra 225 custom,123,5110.4
+69,buick ,century luxus (sw),123,5649.6
+70,buick ,century,123,5635.2
+71,buick ,skyhawk,123,6320
+72,buick ,opel isuzu deluxe,155,6836.8
+73,buick ,skylark,155,7011.2
+74,buick ,century special,184,8192
+75,buick, regal sport coupe (turbo),184,9080
+76,mercury ,cougar,175,3300.6
+77,mitsubishi ,mirage,68,977.8
+78,mitsubishi ,lancer,68,1237.8
+79,mitsubishi ,outlander,68,1333.8
+80,mitsubishi ,g4,102,1537.8
+81,mitsubishi ,mirage g4,116,1991.8
+86,mitsubishi ,montero,88,1397.8
+87,mitsubishi ,pajero,88,1637.8
+90,Nissan ,versa,69,1099.8
+91,nissan ,gt-r,55,1419.8
+92,nissan ,rogue,69,1329.8
+93,nissan ,latio,69,1369.8
+94,nissan ,titan,69,1469.8
+95,nissan ,leaf,69,1459.8
+96,nissan ,juke,69,1559.8
+98,nissan ,note,69,1599.8
+99,nissan ,clipper,69,1649.8
+101,nissan ,nv200,97,1909.8
+102,nissan ,dayz,152,2699.8
+103,nissan ,fuga,152,2879.8
+104,nissan ,otti,152,2699.8
+105,nissan ,teana,160,3439.8
+106,nissan ,kicks,200,3939.8
+108,peugeot ,504,97,2380
+109,peugeot ,304,95,2640
+110,peugeot ,504 (sw),97,2488
+113,peugeot ,604sl,95,3380
+115,peugeot ,505s turbo diesel,95,3415
+118,peugeot ,604sl,142,3630
+119,plymouth ,fury iii,68,1114.4
+120,plymouth ,cricket,102,1591.4
+122,plymouth ,satellite custom (sw),68,1338.4
+123,plymouth ,fury gran sedan,68,1521.8
+124,plymouth ,valiant,88,1784.2
+125,plymouth ,duster,145,2552.8
+126,porsche ,macan,143,4403.6
+127,porsche ,panamera,207,6505.6
+128,porsche ,cayenne,207,6805.6
+129,porsche ,boxter,207,7405.6
+131,renault ,12tl,90,1859
+132,renault, 5 gtl,90,1979
+133,saab ,99e,110,2370
+134,saab ,99le,110,2434
+136,saab ,99gle,110,3102
+140,subaru ,dl,73,1410.6
+143,subaru ,brz,82,1555
+144,subaru ,baja,94,1992
+145,subaru ,r1,82,1846.6
+146,subaru ,r2,111,2251.8
+147,subaru ,trezia,82,1492.6
+148,subaru ,tribeca,94,2039.6
+151,toyota ,corona mark ii,62,1069.6
+152,toyota ,corona,62,1267.6
+153,toyota ,corolla 1200,62,1297.6
+154,toyota ,corona hardtop,62,1383.6
+155,toyota ,corolla 1600 (sw),62,1579.6
+156,toyota ,carina,62,1755.6
+157,toyota ,mark ii,70,1387.6
+164,toyota ,corolla liftback,70,1611.6
+166,toyota ,celica gt liftback,112,1859.6
+167,toyota ,corolla tercel,112,1907.6
+168,toyota ,corona liftback,116,1689.8
+170,toyota ,starlet,116,1997.8
+173,toyota ,cressida,116,3533.8
+175,toyota ,celica gt,73,2139.6
+183,vokswagen ,rabbit,52,1555
+184,volkswagen,1131 deluxe sedan,85,1595
+185,volkswagen ,model 111,52,1599
+186,volkswagen ,type 3,85,1639
+187,volkswagen ,411 (sw),85,1699
+188,volkswagen ,super beetle,68,1899
+189,volkswagen ,dasher,100,1999
+193,volkswagen,rabbit custom,68,2769
+195,volvo ,145e (sw),114,2588
+196,volvo ,144ea,114,2683
+197,volvo ,244dl,114,3197
+198,volvo ,245,114,3303
+199,volvo ,264gl,162,3684
+200,volvo ,diesel,162,3790
