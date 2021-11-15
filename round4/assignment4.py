@@ -19,6 +19,8 @@ class Fractie:
         return str(self.numarator) + "/"+ str(self.numitor)
     
     def __sub__(self, other):
+        if not isinstance(other, Fractie):
+            raise TypeError("Fraction argument expected!")
         m = self.numitor * other.numitor
         n = self.numarator * other.numitor - self.numitor*other.numarator
         gcd = math.gcd(n,m)
@@ -27,6 +29,8 @@ class Fractie:
         return Fractie(n,m)
     
     def __add__(self, other):
+        if not isinstance(other, Fractie):
+            raise TypeError("Fraction argument expected!")
         m = self.numitor * other.numitor
         n = self.numitor * other.numarator + self.numarator*other.numitor
         gcd = math.gcd(n,m)
@@ -35,6 +39,8 @@ class Fractie:
         return Fractie(n,m)
     
     def __mul__(self, other):
+        if not isinstance(other, Fractie):
+            raise TypeError("Fraction argument expected!")
         m = self.numitor * other.numitor
         n = self.numarator * other.numarator
         gcd = math.gcd(n,m)
@@ -43,6 +49,8 @@ class Fractie:
         return Fractie(n,m)
     
     def __truediv__(self, other):
+        if not isinstance(other, Fractie):
+            raise TypeError("Fraction argument expected!")
         m = self.numitor * other.numarator
         n = self.numarator * other.numitor
         gcd = math.gcd(n,m)
