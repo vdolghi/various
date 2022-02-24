@@ -1,17 +1,19 @@
-from tkinter.tix import Tree
 from django.db import models
 from django_countries.fields import CountryField
 from phonenumber_field.modelfields import PhoneNumberField
 from django.contrib.auth.models import AbstractUser
 
-class User(AbstractUser):
-    avatar = models.ImageField(upload_to='staticfiles/images/avatars/')
-    birth_date = models.DateField
+class CustomUser(AbstractUser):
+    avatar = models.ImageField(upload_to='images/avatars/', blank=True)
+    birth_date = models.DateField(null=True, blank=True)
     class Meta:
         db_table = 'tbl_users'
 
+    def __str__(self) -> str:
+        return self.first_name + " " + self.last_name
+
 class Address(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     country = CountryField()
     state = models.CharField(max_length=30)
     city = models.CharField(max_length=30)
@@ -22,8 +24,12 @@ class Address(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self) -> str:
+        return [self.country, self.state, self.city, self.address1, self.address2].join(", ")
+
     class Meta:
         db_table = 'tbl_addresses'
+        verbose_name_plural = "Addresses"
 class Product(models.Model):
     class Category(models.TextChoices):
         RED = 'red', 'Red Wine'
@@ -41,6 +47,9 @@ class Product(models.Model):
     stock = models.SmallIntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self) -> str:
+        return self.name[:50]
     class Meta:
         db_table = 'tbl_products'
         ordering = ('name',)
@@ -48,7 +57,7 @@ class Product(models.Model):
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     is_featured = models.BooleanField(default=False)
-    image = models.ImageField(upload_to='staticfiles/images/products/')
+    image = models.ImageField(upload_to='static/images/products/')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     class Meta:
@@ -56,7 +65,7 @@ class ProductImage(models.Model):
 
 class ProductReview(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     content = models.TextField
     rating = models.SmallIntegerField(default=None, null = True)
@@ -72,7 +81,7 @@ class Order(models.Model):
         PAYMENT_CONFIRMED = 'payment_confirmed', 'New order after payment confirmation'
         IN_PROGRESS = 'in_progress', 'Order being processed'
         COMPLETED = 'completed', 'Order completed'
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     status = models.CharField(max_length=20, choices=OrderStatus.choices, default=OrderStatus.NEW)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -88,3 +97,4 @@ class OrderDetails(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     class Meta:
         db_table = 'tbl_order_details'
+        verbose_name_plural = 'Orders Details'
