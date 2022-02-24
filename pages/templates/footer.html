@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block footer %}
+
+<div class="container">
+    <footer class="row row-cols-5 py-5 my-5 border-top">
+      <div class="col">
+        <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
+          <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+        </a>
+        <p class="text-muted">&copy; Vlad Dolghi, {% now "Y" %}</p>
+      </div>
+  
+      <div class="col">
+  
+      </div>
+  
+      <div class="col">
+        <h5>About</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Our History</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Our Team</a></li>
+        </ul>
+      </div>
+  
+      <div class="col">
+        <h5>Policies</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Shipping and Returns</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Terms of Service</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Privacy Policy</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Accessibility statement</a></li>
+        </ul>
+      </div>
+  
+      <div class="col">
+        <h5>Contact</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">+40 749999999</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">madcoder@vineyard.com</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Bucharest, Aleea Ploii 34</a></li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+
+{% endblock footer %}

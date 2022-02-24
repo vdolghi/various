@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extracss%}
+<link rel="stylesheet" href="{% static 'css/authorization.css' %}">
+{% endblock extracss %}
+
+{% block content %}
+
+<div class="container">
+	<div class="d-flex justify-content-center align-items-center min-vh-100">
+		<div class="card login-card">
+			<div class="card-header login-card-header mt-2">
+				<h3>Sign Up</h3>
+			</div>
+			<div class="card-body">
+				<form class="signup" method="POST" action="{% url 'account_signup' %}">
+					{% csrf_token %}
+					{% if redirect_field_value %}
+              <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+          {% endif %}
+
+          <div class="input-group form-group mb-3">
+						<div class="input-group-prepend prepend-signup">
+							<span class="input-group-text"><i class="fas fa-f" title="First Name"></i></span>
+						</div>
+						<input type="text" name="first_name" id="id_first_name"  maxlength="150" class="form-control" placeholder="First Name">
+					</div>
+
+          <div class="input-group form-group mb-3">
+						<div class="input-group-prepend prepend-signup">
+							<span class="input-group-text"><i class="fas fa-l" title="Last Name"></i></span>
+						</div>
+						<input type="text" name="last_name" id="id_last_name" maxlength="150" class="form-control" placeholder="Last Name">
+					</div>
+
+          <div class="input-group form-group mb-3">
+						<div class="input-group-prepend prepend-signup">
+							<span class="input-group-text"><i class="fas fa-at" title="Email"></i></span>
+						</div>
+						<input type="email" name="email" required id="id_email" maxlength="254" class="form-control" placeholder="Email">
+					</div>
+
+					<div class="input-group form-group mb-3">
+						<div class="input-group-prepend prepend-signup">
+							<span class="input-group-text"><i class="fas fa-key" title="New Password"></i></span>
+						</div>
+						<input type="password" name="password1" autocomplete="new-password" required id="id_password1" class="form-control" placeholder="New Password">
+					</div>
+
+          <div class="input-group form-group mb-3">
+						<div class="input-group-prepend prepend-signup">
+							<span class="input-group-text"><i class="fas fa-key"  title="Confirm Password"></i></span>
+						</div>
+						<input type="password" name="password2" autocomplete="new-password" required id="id_password2" class="form-control" placeholder="Confirm Password">
+					</div>
+
+          <div class="input-group form-group mb-3">
+						<div class="input-group-prepend prepend-signup">
+							<span class="input-group-text"><i class="fas fa-calendar-days" title="Your Birthdate"></i></span>
+						</div>
+						<input type="date" name="birth_date" id="id_birth_date" class="form-control">
+					</div>
+
+          <div class="input-group form-group mb-3">
+						<div class="input-group-prepend prepend-signup">
+							<span class="input-group-text"><i class="fas fa-masks-theater" title="Avatar"></i></span>
+						</div>
+						<input type="file" name="avatar" id="id_avatar" accept="image/*" class="form-control">
+					</div>
+
+					<div class="form-group">
+						<input type="submit" value="Sign Up" class="btn float-end login_btn">
+					</div>
+          <div>
+            {{ form.errors }}
+          </div>
+				</form>
+			</div>
+			<div class="card-footer">
+				<div class="d-flex justify-content-center links">
+					Already have an account? <a href="{% url 'account_login' %}">Log In</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock content %}
+
+
