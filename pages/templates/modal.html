@@ -1,0 +1,36 @@
+<div class="modal fade" id="review" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Leave a review</h5>
+          <button class="btn btn-outline-info rounded-pill" data-bs-dismiss="modal">&times;</button>
+        </div>
+        <form method="POST">
+          {% csrf_token %}
+          <div class="modal-body">
+            <div class="bg-grey">
+              <div class="text-center pt-2 star-rating">
+                {{review_form.rating}}
+                <span class="fa fa-star-o text-warning" data-rating="1"></span>
+                <span class="fa fa-star-o text-warning" data-rating="2"></span>
+                <span class="fa fa-star-o text-warning" data-rating="3"></span>
+                <span class="fa fa-star-o text-warning" data-rating="4"></span>
+                <span class="fa fa-star-o text-warning" data-rating="5"></span>
+                <input type="hidden" name="whatever1" class="rating-value" value="0">
+              </div>
+              <hr class="m-0" />
+              <div class="input-field text-center p-2">
+                {{review_form.title}}
+              </div>
+              <div class="input-field text-center p-2">
+                {{review_form.content}}
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-info" type="submit">Confirm</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

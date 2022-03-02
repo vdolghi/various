@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock header %}
+
+{% block content %}
+
+<div id="prod-parent" class="container-fluid mt-5 pt-5 pb-3 d-flex flex-sm-row">
+        <div class="row row-cols-4 w-100">
+            {% for product in search_results %}
+                <div class="col md-4 mt-2">
+                    <div class="card w-100" style="width: 14rem; border: none">
+                    <a href="{% url 'product_page' product_slug=product.slug %}" style="text-decoration: none">
+                        <div class="position-relative">
+                          <img src="{{product.productimage_set.first.image.url}}" class="card-img-top scale-effect" alt="">
+                          {% if product.discount > 0 %}
+                            <div class="position-absolute text-light bg-danger rounded-pill py-2" style="width: 2.5rem; left: 7rem; bottom: 24rem"> -{{product.discount}}%</div>
+                          {% endif%}
+                        </div>
+                    </a>
+                    <div class="card-body text-center">
+                        <p class="fs-5 fw-bold">{{product.price}} &euro;</p>
+                        <p class="card-text">{{product.name}}</p>
+                        <a href="#" class="btn btn-outline-info"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Purchase</a>
+                    </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+</div>
+{% endblock content %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock footer %}

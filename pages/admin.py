@@ -12,7 +12,16 @@ class CustomUserAdmin(UserAdmin):
 
 admin.site.register(CustomUser, CustomUserAdmin)
 admin.site.register(Address)
-admin.site.register(Product)
+
+class ProductReviewInline(admin.TabularInline):
+    model = ProductReview
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin): 
+    list_display = ('name' , 'category' , 'slug' , 'vendor', 'price' , 'discount', 'stock') 
+    list_filter = ('category', 'price', 'stock') 
+    prepopulated_fields = {'slug':('name',)} 
+    inlines = [ProductReviewInline]
+
 admin.site.register(ProductImage)
 admin.site.register(ProductReview)
 admin.site.register(Order)

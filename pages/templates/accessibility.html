@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock header %}
+
+{% block content %}
+
+<div class="container-fluid w-75 mt-5 pt-5 text-muted">
+    <h3 class="mt-2">Accessibility Statement</h3>
+    <p>We strive to make everyone who visits the Programmer's Vineyard website to feel welcome. We're continually improving the user experience for everyone, and applying the relevant accessibility standards to the best of our ability.</p>
+    <h4 class="mt-2">What are we doing?</h4>
+    <p>To helpmake the Programmer's Vineyard website a positive experience for all, we've been using the Web Content Accessibility Guidelines (WCAG) 2.1. These guidelines explain how to make web content more accessible for people with disabilities, and user friendly for everyone.</p>
+    <p>The guidelines have three levels of accessibility (A, AA and AAA). We've chosen Level AA as the target for the Programmer's Vineyard website.</p>
+    <h4 class="mt-2">How are we doing?</h4>
+    <p>We're working hard to achieve our goal of Level AA accessibility, but we realise there are some areas that still need improving and some elements that are beyond our purview. The following information explains what we're doing to make challenging areas more accessible.</p>
+    <h4 class="mt-2">Our technical specifications</h4>
+    <p>Accessibility of Programmer's Vineyard relies on the following technologies to work with the particular combination of web browser and any assistive technologies or plugins installed on your computer:</p>
+    HTML<br>
+    CSS<br>
+    JavaScript<br><br>
+    <p>These technologies are relied upon for conformance with the accessibility standards used.<p>
+    <h4 class="mt-2">Let us know what you think:</h4>
+    <p>If you enjoyed using the Programmer's Vineyard website, or if you had trouble with any part of it, please get in touch. We'd like to hear from you:</p>
+    <p>Email us at madcoder@vineyard.com</p>
+    <p>Call us at +40 749999999</p>
+    <p>We try to respond to feedback within three business days, but depending on the time of year it may take us longer to respond. We appreciate your patience.</p>
+    <p>This accessibility statement was generated on {% now 'DATE_FORMAT' %}.</p>
+</div>
+
+{% endblock content %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock footer %}

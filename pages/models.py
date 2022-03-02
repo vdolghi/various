@@ -2,6 +2,8 @@ from django.db import models
 from django_countries.fields import CountryField
 from phonenumber_field.modelfields import PhoneNumberField
 from django.contrib.auth.models import AbstractUser
+from django.conf import settings
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 class CustomUser(AbstractUser):
     avatar = models.ImageField(upload_to='images/avatars/', blank=True)
@@ -43,16 +45,27 @@ class Product(models.Model):
     category = models.CharField(max_length=5, choices=Category.choices, default=Category.RED)
     vendor = models.CharField(max_length=30)
     price = models.DecimalField(max_digits=8, decimal_places=2)
-    discount = models.SmallIntegerField(default=0)
-    stock = models.SmallIntegerField()
+    discount = models.SmallIntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
+    stock = models.SmallIntegerField(validators=[MinValueValidator(0)])
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
         return self.name[:50]
+
+    def get_average_score(self):
+        average = 0.0 
+        if self.productreview_set.count() > 0 :
+            total = sum([review.rating for review in self.productreview_set.all()])
+            average = total / self.productreview_set.count()
+            return round(average, 1)
+    
+    def review_exists_for_user(self, user_id) -> bool:
+        return self.productreview_set.filter(user_id=user_id).exists()
     class Meta:
         db_table = 'tbl_products'
         ordering = ('name',)
+
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
@@ -60,20 +73,26 @@ class ProductImage(models.Model):
     image = models.ImageField(upload_to='static/images/products/')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self) -> str:
+        return self.product.name[:50]
     class Meta:
         db_table = 'tbl_product_images'
-
 class ProductReview(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
-    content = models.TextField
-    rating = models.SmallIntegerField(default=None, null = True)
+    content = models.TextField(default=None)
+    rating = models.SmallIntegerField(default=None, null = True, validators=[MinValueValidator(1), MaxValueValidator(5)])
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     class Meta:
         db_table = 'tbl_product_reviews'
         unique_together = ['product','user']
+        ordering=('-created_at',)
+    
+    def __str__(self) -> str:
+        return self.title
 
 class Order(models.Model):
     class OrderStatus(models.TextChoices):
@@ -91,7 +110,7 @@ class Order(models.Model):
 class OrderDetails(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     product = models.OneToOneField(Product, on_delete=models.CASCADE)
-    quantity = models.SmallIntegerField()
+    quantity = models.SmallIntegerField(validators=[MinValueValidator(1)])
     single_price = models.DecimalField(max_digits=8, decimal_places=2)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

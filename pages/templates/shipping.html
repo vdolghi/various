@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock header %}
+
+{% block content %}
+
+<div class="container-fluid w-75 mt-5 pt-5 text-muted">
+    <h3 class="mt-2">Shipping</h3>
+    <p>All shipments require an adult signature. Adults must be at least 18 years of age.</p>
+    <p>Orders are subject to weather holds. We will contact you to confirm weather delays.</p>
+    <p>Perishable products require overnight shipping.</p>
+    <p>Local delivery is available in the Bucharest area.</p>
+    <p>Please note that the laws as to whether or not we can ship wine internationally are constantly changing. Our system will accept your order if you place it, (and you will receive an auto-confirmation of your order) but in some cases we will need one business day to confirm we can ship it. You will receive an email or phone call from Programmer's Vineyard indicating whether we can ship. You can also call us at +40 749999999 or email us at madcoder@vineyard.com if you have specific questions. Thank you for your understanding.</p>
+    <h3 class="mt-2">Returns</h3>
+    <p>Programmer's Vineyard strives to deliver high quality products and reliable shipping to our clients, while ensuring overall customer satisfaction. Programmer's Vineyard will accept unopened bottles up to 60 days after purchase with a receipt. In store returns are eligible for store credit. Reimbursement to a credit card are at management's discretion. Due to state law, we cannot issue cash returns. Please note that returns are subject to a restocking fee. If you have any questions as to whether you can return an item, please contact our Customer Service Department at +40 749999999 or at madcoder@vineyard.com.</p>
+</div>
+
+{% endblock content %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock footer %}

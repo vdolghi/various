@@ -12,12 +12,7 @@
         <div id="navbarSupportedContent" class="collapse navbar-collapse">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
-              <ul class="dropdown-menu bg-dark" aria-labelledby="dropdown01">
-                <li><a class="dropdown-item text-secondary" href="#">Red Wine</a></li>
-                <li><a class="dropdown-item text-secondary" href="#">White Wine</a></li>
-                <li><a class="dropdown-item text-secondary" href="#">Rosé Wine</a></li>
-              </ul>
+              <a class="nav-link" href="{% url 'product_grid' category='all' availability='all' order='newest' pagination=50 page=1 %}">Shop Wines</a>
             </li>
             <li class="nav-item"><a href="#" class="nav-link">Cart</a></li>
             {% if user.is_authenticated %}
@@ -25,6 +20,12 @@
               <li class="nav-item">
                 <div class="container d-flex justify-content-start align-items-center">
                   <img class="rounded-circle" style="width:40px;height:40px" src="{{ user.avatar.url }}">
+                </div>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <div class="container d-flex justify-content-start align-items-center">
+                  <img class="rounded-circle" style="width:40px;height:40px" src="{% static 'images/avatars/default-user-image.png' %}">
                 </div>
               </li>
               {% endif %}
@@ -39,7 +40,7 @@
                   <div class="dropdown-divider"></div>
                   <li><a class="dropdown-item text-secondary" href="#">Edit Profile</a></li>
                   <li><a class="dropdown-item text-secondary" href="#">My Orders</a></li>
-                  <li><a class="dropdown-item text-secondary" href="#">My Reviews</a></li>
+                  <li><a class="dropdown-item text-secondary" href="{% url 'my_reviews' %}">My Reviews</a></li>
                   <div class="dropdown-divider"></div>
                   <li><a href="{% url 'account_logout' %}" class="dropdown-item text-secondary" href="#">Log Out</a></li>
                 </ul>
@@ -49,8 +50,8 @@
             {% endif %}
           </ul>
         </div>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <form class="d-flex" method="GET" action="{% url 'search_results' %}">
+          <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-info" type="submit">Search</button>
         </form>
       </div>

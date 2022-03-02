@@ -60,6 +60,11 @@
      cursor: pointer
 }
 
-  .scale-effect:hover {
+.scale-effect:hover {
     transform: scale(1.1)
+}
+
+.star-rating {
+  line-height:32px;
+  font-size:1.25em;
 }

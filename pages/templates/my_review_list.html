@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock header %}
+
+{% block content %}
+
+<div class="container-fluid w-75 mt-5 pt-5">
+    <div class="row w-100">
+    <div class ="card shadow-custom border-0 mb-3 mx-5"> 
+        <h3 class ="py-2 text-grey" > Your reviews:</h3> 
+        {% for review in reviews %}
+        <div class="card w-75">
+            <div class="card-body">
+            <h5 class="card-title">{{ review.product.name }} - [{{ review.rating }}/5] - {{ review.created_at }}:</h5>
+            <h6 class="card-subtitle mb-2 font-weight-bold py-2 text-grey">{{review.title}}</h6>
+            <p class="card-text">{{review.content}}</p>
+            <a class="btn btn-outline-danger" href="reviews/delete/{{review.id}}">Delete</a>
+            </div>
+        </div>
+        
+        <hr> 
+        {% empty %}
+        <span class ="pb-2"> Currently you have no reviews!</span> 
+        {% endfor %}
+    </div>
+    </div>
+</div>
+
+{% include 'modal.html' %}
+
+{% endblock content %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock footer %}

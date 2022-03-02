@@ -1,0 +1,143 @@
+{% extends 'base.html' %} 
+
+{% load static %} 
+
+{% block header %} {% include 'header.html' %} {% endblock header %} 
+
+{% block content %}
+
+<div class="card shadow-custom border-0 col-lg-8 mx-auto mt-5 pt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <img
+        src="{{ product.productimage_set.first.image.url }}"
+        alt=""
+        class="img-fluid rounded-0"
+      />
+    </div>
+    <div class="col-lg-6">
+      <div class="top">
+        <h2 class="mt-4 font-weight-bold text-grey">{{ product.name }}</h2>
+        <div style="font-weight: bold">
+          <span class="font-weight-bold text-grey"> Vendor: </span> 
+          {{ product.vendor }}
+        </div>
+      </div>
+      <div class="mt-3 mb-3 lead">{{ product.description }}</div>
+      {% if product.stock > 25 %}
+      <div class="alert alert-success my-3 text-center">In Stock</div>
+      {% elif product.stock > 10 and product.stock <= 25 %}
+      <div class="alert alert-success my-3 text-center">Limited Stock</div>
+      {% elif product.stock > 0 and product.stock <= 10 %}
+      <div class="alert alert-warning my-3 text-center">Last items</div>
+      {% else %}
+      <div class="alert alert-danger my-3 text-center">Out of stock</div>
+      {% endif %}
+      <hr />
+      <div>
+        <span class="font-weight-bold text-grey">
+          Average rating: {{product.get_average_score}}
+        </span>
+        <div class="mb-3 font-weight-bold">
+          <a
+            href=""
+            class="text-info"
+            data-bs-toggle="modal"
+            data-bs-target="#review"
+          >
+          {% if product.productreview_set.count == 0 or not_yet_reviewed %}
+            Review this product
+          {% else %}
+            Edit your review
+          {% endif %}
+          </a>
+        </div>
+      </div>
+      <div class="mb-4">
+        <form>
+          <span class="input-group add-to-cart shadow-custom">
+            <div class="input-group-prepend">
+              <span
+                class="input-group-text font-weight-bold px-3 btn btn-block price"
+                style="font-weight: bold"
+              >
+                {{ product.price }} &euro;
+              </span>
+            </div>
+            <span id="minus" class="input-group-text button_minus px-4">
+              -
+            </span>
+            <input
+              type="number"
+              value="1"
+              class="form-control text-center px-3"
+            />
+            <span id="plus" class="input-group-text button_plus px-4"> + </span>
+            <div class="input-group-append">
+              <button
+                class="btn btn-outline-info px-4"
+                type="submit"
+                data-toggle="tooltip"
+                data-placement="top"
+                title="Purchase Product"
+              >
+                <i class="fas fa-shopping-cart"></i>
+              </button>
+            </div>
+          </span>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class ="col-7 mx-auto" > 
+<div class="row w-100">
+  <div class ="card shadow-custom border-0 mb-3 mx-5"> 
+    <h3 class ="py-2 text-grey" > Reviews:</h3> 
+      {% for review in product.productreview_set.all %}
+      <div class="card w-75">
+        <div class="card-body">
+          <h5 class="card-title">{{ review.user.first_name }} {{review.user.last_name}} - [{{ review.rating }}/5] - {{ review.created_at }} said:</h5>
+          <h6 class="card-subtitle mb-2 font-weight-bold py-2 text-grey">{{review.title}}</h6>
+          <p class="card-text">{{review.content}}.</p>
+        </div>
+      </div>
+      <hr> 
+      {% empty %}
+      <span class ="pb-2"> Currently no reviews</span> 
+      {% endfor %}
+  </div>
+</div>
+
+{% include 'modal.html' %}
+
+{% endblock content %} 
+
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}
+
+{% block extrajs%} 
+  <script>
+    var $star_rating = $('.star-rating .fa');
+
+    var SetRatingStar = function() {
+      return $star_rating.each(function() {
+        if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
+          return $(this).removeClass('fa-star-o').addClass('fa-star text-warning');
+        } else {
+          return $(this).removeClass('fa-star').addClass('fa-star-o text-warning');
+        }
+      });
+    };
+
+    $star_rating.on('click', function() {
+      $star_rating.siblings('input.rating-value').val($(this).data('rating'));
+      SetRatingStar();
+      let numItems = $('.fa-star').length;
+      $("input[name=rating][value=" + numItems + "]").prop('checked', true);
+    });
+
+    SetRatingStar();
+    $(document).ready(function() { });
+  </script>
+{% endblock extrajs%}

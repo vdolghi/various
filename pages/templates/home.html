@@ -29,7 +29,7 @@
           <h1>Shop our biggest wine sale ever</h1>
           <p>No matter how you pour it, we've got a great wine deal for you! Discounts apply in your cart
             automatically, no code needed.</p>
-          <p><a class="btn btn-lg btn-outline-info rounded-pill" href="#">Shop Wines</a></p>
+          <p><a class="btn btn-lg btn-outline-info rounded-pill" href="{% url 'product_grid' category='all' availability='all' order='newest' pagination=50 page=1 %}">Shop Wines</a></p>
         </div>
       </div>
     </div>
@@ -52,19 +52,19 @@
   <div class="row">
     <div class="col-lg-4">
       <button type="button" class="btn btn-outline-dark rounded-circle stuff disabled">
-        <h2>45</h2>
+        <h2>{{vendor_nr}}</h2>
       </button>
       <h2>Brands</h2>
     </div>
     <div class="col-lg-4">
       <button type="button" class="btn btn-outline-dark rounded-circle stuff disabled">
-        <h2>118</h2>
+        <h2>{{prod_nr}}</h2>
       </button>
       <h2>Products in portfolio</h2>
     </div>
     <div class="col-lg-4">
       <button type="button" class="btn btn-outline-dark rounded-circle stuff disabled">
-        <h2>4632</h2>
+        <h2>{{stock_nr}}</h2>
       </button>
       <h2>Bottles in warehouse</h2>
     </div>

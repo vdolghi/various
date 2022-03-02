@@ -20,7 +20,7 @@
       <div class="col">
         <h5>About</h5>
         <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+          <li class="nav-item mb-2"><a href="{% url 'home' %}" class="nav-link p-0 text-muted">Home</a></li>
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Our History</a></li>
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Our Team</a></li>
         </ul>
@@ -29,10 +29,10 @@
       <div class="col">
         <h5>Policies</h5>
         <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Shipping and Returns</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Terms of Service</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Privacy Policy</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Accessibility statement</a></li>
+          <li class="nav-item mb-2"><a href="{% url 'shipping_returns' %}" class="nav-link p-0 text-muted">Shipping and Returns</a></li>
+          <li class="nav-item mb-2"><a href="{% url 'terms_of_service' %}" class="nav-link p-0 text-muted">Terms of Service</a></li>
+          <li class="nav-item mb-2"><a href="{% url 'privacy_policy' %}" class="nav-link p-0 text-muted">Privacy Policy</a></li>
+          <li class="nav-item mb-2"><a href="{% url 'accessibility' %}" class="nav-link p-0 text-muted">Accessibility statement</a></li>
         </ul>
       </div>
   
