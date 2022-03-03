@@ -20,7 +20,7 @@
                                 <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category='all' availability=availability order=order pagination=pagination page=page %}">All</a></li>
                                 <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category='red' availability=availability order=order pagination=pagination page=page %}">Red Wine</a></li>
                                 <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category='white' availability=availability order=order pagination=pagination page=page %}">White Wine</a></li>
-                                <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category='rose' availability=availability order=order pagination=pagination page=page %}">Rose Wine</a></li>
+                                <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category='rose' availability=availability order=order pagination=pagination page=page %}">Rosé Wine</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -84,7 +84,7 @@
                         <div class="position-relative">
                           <img src="{{product.productimage_set.first.image.url}}" class="card-img-top scale-effect" alt="">
                           {% if product.discount > 0 %}
-                            <div class="position-absolute text-light bg-danger rounded-pill py-2" style="width: 2.5rem; left: 7rem; bottom: 24rem"> -{{product.discount}}%</div>
+                            <div class="position-absolute text-light bg-danger rounded-pill py-2" style="width: 2.5rem; left: 5rem; bottom: 18rem"> -{{product.discount}}%</div>
                           {% endif%}
                         </div>
                     </a>

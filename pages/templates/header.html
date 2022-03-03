@@ -11,15 +11,10 @@
         </a>
         <div id="navbarSupportedContent" class="collapse navbar-collapse">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown">
-              <a class="nav-link" href="{% url 'product_grid' category='all' availability='all' order='newest' pagination=50 page=1 %}">Shop Wines</a>
+            <li class="nav-item">
+              <a class="btn btn-outline-info text-info" href="{% url 'product_grid' category='all' availability='all' order='newest' pagination=50 page=1 %}">Shop Wines</a>
             </li>
-            <li class="nav-item"><a href="{% url 'cart:shopping_cart_detail' %}" class="nav-link">
-              <i class="fas fa-shopping-cart text-info"></i>
-              {% if shopping_cart_num != 0 %}
-                <span class="rounded-pill bg-dark text-info border border-info px-2 py-1">{{shopping_cart_num}}</span>
-              {% endif %}
-            </a></li>
+            
             {% if user.is_authenticated %}
               {% if user.avatar %}
               <li class="nav-item">
@@ -51,8 +46,14 @@
                 </ul>
               </li>
             {% else %}
-              <li class="nav-item"><a href="{% url 'account_login' %}" class="btn btn-outline-info" role="button">Log in</a></li>
+              <li class="px-2 nav-item"><a href="{% url 'account_login' %}" class="btn btn-outline-info">Log in</a></li>
             {% endif %}
+            <li class="nav-item"><a href="{% url 'cart:shopping_cart_detail' %}" class="nav-link">
+              <i class="fas fa-shopping-cart text-info"></i>
+              {% if shopping_cart_num != 0 %}
+                <span class="rounded-pill bg-dark text-info border border-info px-2 py-1">{{shopping_cart_num}}</span>
+              {% endif %}
+            </a></li>
           </ul>
         </div>
         <form class="d-flex" method="GET" action="{% url 'search_results' %}">
