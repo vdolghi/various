@@ -14,7 +14,12 @@
             <li class="nav-item dropdown">
               <a class="nav-link" href="{% url 'product_grid' category='all' availability='all' order='newest' pagination=50 page=1 %}">Shop Wines</a>
             </li>
-            <li class="nav-item"><a href="#" class="nav-link">Cart</a></li>
+            <li class="nav-item"><a href="{% url 'cart:shopping_cart_detail' %}" class="nav-link">
+              <i class="fas fa-shopping-cart text-info"></i>
+              {% if shopping_cart_num != 0 %}
+                <span class="rounded-pill bg-dark text-info border border-info px-2 py-1">{{shopping_cart_num}}</span>
+              {% endif %}
+            </a></li>
             {% if user.is_authenticated %}
               {% if user.avatar %}
               <li class="nav-item">

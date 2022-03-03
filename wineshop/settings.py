@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook',
     'pages.apps.PagesConfig',
+    'ShoppingCart.apps.ShoppingcartConfig'
 ]
 
 MIDDLEWARE = [
@@ -73,6 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'wineshop.context_processors.cart',
             ],
         },
     },
@@ -167,6 +169,8 @@ MEDIA_ROOT = str(BASE_DIR.joinpath('media'))
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SITE_ID = 1
+
+CART_ID = 'cart'
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {

@@ -88,11 +88,14 @@
                           {% endif%}
                         </div>
                     </a>
-                    <div class="card-body text-center">
-                        <p class="fs-5 fw-bold">{{product.price}} &euro;</p>
-                        <p class="card-text">{{product.name}}</p>
-                        <a href="#" class="btn btn-outline-info"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Purchase</a>
-                    </div>
+                    <form action="{% url 'cart:shopping_cart_add' product.id %}" method="POST">
+                        {% csrf_token %}
+                        <div class="card-body text-center">
+                            <p class="fs-5 fw-bold">{{product.price}} &euro;</p>
+                            <p class="card-text">{{product.name}}</p>
+                            <button class="btn btn-outline-info"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Purchase</button>
+                        </div>
+                    </form>
                     </div>
                 </div>
             {% endfor %}

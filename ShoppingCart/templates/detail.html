@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock header %}
+
+{% block content %}
+
+<div class ="card shadow-custom border-0 col-lg-10 mx-auto mb-3 mt-5 pt-5"> 
+    <h3 class ="py-2 font-weight-bold text-grey text-center">Your order:</h3> 
+    <div class ="row justify-content-center py-2 text-center header-desc"> 
+      <div class ="col-lg-2 align-self-center">Product</div>
+      <div class ="col-lg-2 align-self-center">Description</div> 
+      <div class ="col-lg-2 align-self-center">Stock</div> 
+      <div class ="col-lg-1 align-self-center">Price</div> 
+      <div class ="col-lg-2 align-self-center">Quantity</div> 
+      <div class ="col-lg-3 align-self-center">Total</div> 
+    </div> 
+    <hr class ="mt-0" > 
+      {% for item in shopping_cart %}
+        {% with product=item.product %}
+          <div class ="row justify-content-center cart mb-3"> 
+            <div class ="cart-item col-4 col-lg-2"> 
+              <a href ="{{ product.get_absolute_url }}"> 
+                <img src ="{{ product.productimage_set.first.image.url }}" alt ="" class ="img-fluid rounded-0" style="width: 100px; height: 100px"> 
+              </a> 
+            </div> 
+            <div class ="cart-item product-name col-12 col-lg-2 align-self-center text-center"> 
+              {{ product.name }}
+            </div> 
+            <div class ="cart-item col-12 col-lg-2 align-self-center"> 
+              {% if product.stock > 25 %}
+                <div class="text-success mb-0 text-center">In Stock</div>
+              {% elif product.stock > 10 and product.stock <= 25 %}
+                <div class="text-success mb-0 text-center">Limited Stock</div>
+              {% elif product.stock > 0 and product.stock <= 10 %}
+                <div class="text-warning mb-0 text-center">Last items</div>
+              {% else %}
+                <div class="text-danger mb-0 text-center">Out of stock</div>
+              {% endif %}
+            </div> 
+            <div class ="cart-item col-12 col-sm-3 col-lg-1 align-self-center text-center"> 
+              <span> {{ product.price }} &euro;</span> 
+            </div> 
+            <div class ="cart-item col-6 col-sm-5 col-lg-2 align-self-center"> 
+            <form action = "{% url 'cart:shopping_cart_add' product.id %}" method = "POST"> 
+              {% csrf_token %}
+              <span class ="input-group shopping-cart"> 
+                {{ item.update_quantity_form.quantity }}
+                <input type ="hidden" name ="overwrite_qty" value ="True"> 
+                <div class ="input-group-append"> 
+                  <button type ="submit" class ="btn text-dark" data-toggle ="tooltip" data-placement ="top" title ="Update"> 
+                    <i class ="fas fa-edit"></i> 
+                  </button> 
+                </div> 
+              </span> 
+            </form> 
+          </div> 
+          <div class ="cart-item col-12 col-sm-3 col-lg-2 align-self-center text-right"> 
+            <span> {{ item.total }} &euro;</span> 
+          </div> 
+          <div class ="cart-item col-12 col-lg-1 text-right align-self-center"> 
+            <form action="{% url 'cart:shopping_cart_remove' product.id %}" method = "POST"> 
+              {% csrf_token %}
+              <button type ="submit" class ="btn" data-toggle ="tooltip" data-placement ="top" title ="Remove"> 
+                <i class ="fas fa-trash-alt" ></i> 
+              </button> 
+            </form> 
+          </div> 
+        </div> 
+        {% endwith %}
+      {% empty %}
+      <div class ="align-self-center"> 
+        <span class ="text-center font-weight-bold text-muted lead"> 
+          Your shopping cart is empty.
+        </span> 
+      </div> 
+      {% endfor %}
+      <hr> 
+      <div class ="total-price-cart"> 
+        <h4 class ="row justify-content-center" > 
+          <div class ="col-5 col-lg-9 text-right text-grey"> 
+            Total price:
+          </div> 
+          <div class ="col-5 col-lg-2 text-right text-dark"> 
+            {{ shopping_cart_total | floatformat:2 }} &euro;
+          </div> 
+          <div class ="col-2 col-lg-1" > 
+          </div> 
+        </h4> 
+      </div> 
+    </div> 
+    <hr> 
+    <div class ="col-lg-10 mx-auto mb-5" > 
+        <div class ="row justify-content-end" > 
+        {% if shopping_cart|length > 0 %}
+          <div class ="col-lg-6 px-0" > 
+            <div class ="btn-group d-flex" > 
+              <a href ="{% url 'product_grid' category='all' availability='all' order='newest' pagination=50 page=1 %}" class ="btn btn-outline-info shadow-custom col"> 
+                Back to shop
+              </a> 
+              <a href ="" class ="btn btn-outline-danger shadow-custom col"> 
+                Checkout
+              </a> 
+            </div> 
+            </div> 
+        {% else %}
+          <div class ="col-lg-3 px-0" > 
+            <div class ="btn-group d-flex" > 
+              <a href ="{% url 'product_grid' category='all' availability='all' order='newest' pagination=50 page=1 %}" class ="btn btn-outline-info shadow-custom col"> 
+                Back to shop
+              </a> 
+            </div> 
+          </div> 
+        {% endif %}
+        </div>
+     </div>
+
+{% endblock content %}
+
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock footer %}

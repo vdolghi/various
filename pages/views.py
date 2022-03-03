@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from allauth.account.views import SignupView
+from ShoppingCart.views import shopping_cart_add
 from .forms import CustomUserCreationForm, ProductReviewForm
+from ShoppingCart.forms import ShoppingCartAddProductForm
 from django.contrib import messages
 from .models import *
 from django.db.models import Q
@@ -90,7 +92,7 @@ def search_result_view(request):
     if 'search' in request.GET:
         products = products.filter(name__icontains=request.GET['search'])
 
-    return render(request, 'search_results.html', { 'search_results': products, 'product_images': product_images })
+    return render(request, 'search_results.html', { 'search_results': products, 'product_images': product_images, 'query': request.GET['search'] })
 
 def product_page_view(request, product_slug):
     product = get_object_or_404(Product, slug=product_slug) 
@@ -110,8 +112,9 @@ def product_page_view(request, product_slug):
         return redirect('product_page', product_slug=product_slug)
     else:
         form = ProductReviewForm()
+        shopping_cart_add_form = ShoppingCartAddProductForm()
 
-    return render(request, 'product_page.html', {'product': product, 'not_yet_reviewed': not_yet_reviewed, 'review_form': form})
+    return render(request, 'product_page.html', {'product': product, 'not_yet_reviewed': not_yet_reviewed, 'review_form': form, 'cart_product_form': shopping_cart_add_form})
 
 def my_reviews_view(request, obj_id=None):
 
