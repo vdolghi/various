@@ -17,10 +17,10 @@
                                 Categories
                                 </a>
                                 <ul class="dropdown-menu bg-light" aria-labelledby="dropdown01">
-                                <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category='all' availability=availability order=order pagination=pagination page=page %}">All</a></li>
-                                <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category='red' availability=availability order=order pagination=pagination page=page %}">Red Wine</a></li>
-                                <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category='white' availability=availability order=order pagination=pagination page=page %}">White Wine</a></li>
-                                <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category='rose' availability=availability order=order pagination=pagination page=page %}">Rosé Wine</a></li>
+                                <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category='all' availability=availability order=order pagination=pagination page=products.number %}">All</a></li>
+                                <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category='red' availability=availability order=order pagination=pagination page=products.number %}">Red Wine</a></li>
+                                <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category='white' availability=availability order=order pagination=pagination page=products.number %}">White Wine</a></li>
+                                <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category='rose' availability=availability order=order pagination=pagination page=products.number %}">Rosé Wine</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -32,11 +32,11 @@
                                 Availability
                                 </a>
                                 <ul class="dropdown-menu bg-light" aria-labelledby="dropdown02">
-                                <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category=category availability='all' order=order pagination=pagination page=page %}">All</a></li>
-                                <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category=category availability='sufficient' order=order pagination=pagination page=page %}">In Stock</a></li>
-                                <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category=category availability='limited' order=order pagination=pagination page=page %}">Limited Stock</a></li>
-                                <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category=category availability='lastproducts' order=order pagination=pagination page=page %}">Last Items</a></li>
-                                <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category=category availability='outofstock' order=order pagination=pagination page=page %}">Out Of Stock</a></li>
+                                <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category=category availability='all' order=order pagination=pagination page=products.number %}">All</a></li>
+                                <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category=category availability='sufficient' order=order pagination=pagination page=products.number %}">In Stock</a></li>
+                                <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category=category availability='limited' order=order pagination=pagination page=products.number %}">Limited Stock</a></li>
+                                <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category=category availability='lastproducts' order=order pagination=pagination page=products.number %}">Last Items</a></li>
+                                <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category=category availability='outofstock' order=order pagination=pagination page=products.number %}">Out Of Stock</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -48,12 +48,12 @@
                                 Sort By
                                 </a>
                                 <ul class="dropdown-menu bg-light" aria-labelledby="dropdown03">
-                                <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category=category availability=availability order='newest' pagination=pagination page=page %}">Newest</a></li>
-                                <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category=category availability=availability order='price_asc' pagination=pagination page=page %}">Price Ascending</a></li>
-                                <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category=category availability=availability order='price_desc' pagination=pagination page=page %}">Price Descending</a></li>
-                                <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category=category availability=availability order='popularity' pagination=pagination page=page %}">Popularity</a></li>
-                                <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category=category availability=availability order='discount' pagination=pagination page=page %}">Discount</a></li>
-                                <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category=category availability=availability order='reviews' pagination=pagination page=page %}">Review score</a></li>
+                                <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category=category availability=availability order='newest' pagination=pagination page=products.number %}">Newest</a></li>
+                                <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category=category availability=availability order='price_asc' pagination=pagination page=products.number %}">Price Ascending</a></li>
+                                <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category=category availability=availability order='price_desc' pagination=pagination page=products.number %}">Price Descending</a></li>
+                                <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category=category availability=availability order='popularity' pagination=pagination page=products.number %}">Popularity</a></li>
+                                <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category=category availability=availability order='discount' pagination=pagination page=products.number %}">Discount</a></li>
+                                <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category=category availability=availability order='reviews' pagination=pagination page=products.number %}">Review score</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -65,10 +65,10 @@
                             Products on page
                             </a>
                             <ul class="dropdown-menu bg-light" aria-labelledby="dropdown04">
-                            <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category=category availability=availability order=order pagination=10 page=page %}">10 Products</a></li>
-                            <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category=category availability=availability order=order pagination=25 page=page %}">25 Products</a></li>
-                            <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category=category availability=availability order=order pagination=50 page=page %}">50 Products</a></li>
-                            <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category=category availability=availability order=order pagination=100 page=page %}">100 products</a></li>
+                            <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category=category availability=availability order=order pagination=10 page=products.number %}">10 Products</a></li>
+                            <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category=category availability=availability order=order pagination=25 page=products.number %}">25 Products</a></li>
+                            <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category=category availability=availability order=order pagination=50 page=products.number %}">50 Products</a></li>
+                            <li><a class="dropdown-item text-secondary" href="{% url 'product_grid' category=category availability=availability order=order pagination=100 page=products.number %}">100 products</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -100,6 +100,27 @@
                 </div>
             {% endfor %}
         </div>
+
+        <div class="d-flex w-100">
+            <div class="mx-auto">
+            <span>
+                {% if products.has_previous %}
+                    <a href="{% url 'product_grid' category=category availability=availability order=order pagination=pagination page=1 %}">&laquo; first</a>
+                    <a href="{% url 'product_grid' category=category availability=availability order=order pagination=pagination page=products.previous_page_number %}">previous</a>
+                {% endif %}
+        
+                <span>
+                    Page {{ products.number }} of {{ products.paginator.num_pages }}.
+                </span>
+        
+                {% if products.has_next %}
+                    <a href="{% url 'product_grid' category=category availability=availability order=order pagination=pagination page=products.next_page_number %}">next</a>
+                    <a href="{% url 'product_grid' category=category availability=availability order=order pagination=pagination page=products.paginator.num_pages %}">last &raquo;</a>
+                {% endif %}
+            </span>
+            </div>
+        </div>
+
 </div>
 {% endblock content %}
 

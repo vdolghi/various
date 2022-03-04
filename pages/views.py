@@ -77,11 +77,11 @@ def product_grid_view(request, category='all', availability='all', order='newest
 
     paginator = Paginator(products, pagination) # 50 products per page is the default
     try:
-        products = paginator.page(page)
+        page_obj = paginator.page(page)
     except EmptyPage:
-        products = paginator.page(paginator.num_pages)
+        page_obj = paginator.page(paginator.num_pages)
             
-    return render(request, 'product_grid.html', { 'products': products, 'product_images': product_images, 'category': category, 'availability': availability, 
+    return render(request, 'product_grid.html', { 'products': page_obj, 'product_images': product_images, 'category': category, 'availability': availability, 
                                                   'order': order, 'pagination': pagination, 'page': page })
 
 def search_result_view(request):

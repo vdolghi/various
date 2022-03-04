@@ -89,7 +89,13 @@ AUTH_USER_MODEL = 'pages.CustomUser'
 
 ACCOUNT_FORMS = {'signup' : 'pages.forms.CustomUserCreationForm'}
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = str(getenv('EMAIL_BACKEND'))
+EMAIL_HOST = str(getenv('EMAIL_HOST'))
+EMAIL_HOST_USER = str(getenv('EMAIL_HOST_USER'))
+EMAIL_HOST_PASSWORD = str(getenv('EMAIL_HOST_PASSWORD'))
+EMAIL_PORT = str(getenv('EMAIL_PORT'))
+EMAIL_USE_TLS = str(getenv('EMAIL_USE_TLS'))
+DEFAULT_FROM_EMAIL = str(getenv('DEFAULT_FROM_EMAIL'))
 
 LOGIN_REDIRECT_URL = '/'
 ACCOUNT_LOGIN_REDIRECT_URL = '/'

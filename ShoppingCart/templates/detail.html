@@ -100,8 +100,8 @@
               <a href ="{% url 'product_grid' category='all' availability='all' order='newest' pagination=50 page=1 %}" class ="btn btn-outline-info shadow-custom col"> 
                 Back to shop
               </a> 
-              <a href ="" class ="btn btn-outline-danger shadow-custom col"> 
-                Checkout
+              <a href ="{% url 'cart:place_order' %}" class ="btn btn-outline-danger shadow-custom col"> 
+                Place Order
               </a> 
             </div> 
             </div> 
